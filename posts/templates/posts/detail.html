@@ -1,12 +1,6 @@
-<html>
-  <body>
-    {% if messages %}
-<ul class="messages">
-    {% for message in messages %}
-    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
-    {% endfor %}
-</ul>
-{% endif %}
+{% extends "posts/base.html" %}
+{% block head %} {{instance.title}}| {{block.super}} {% endblock head %}
+{% block content %}
     <h1>{{title}}</h1>
       <br>
       {{instance.title}}
@@ -18,5 +12,5 @@
       {{instance.timestamp}}
       <br>
       {{instance.id}}
-  </body>
-</html>
+
+  {% endblock content%}
