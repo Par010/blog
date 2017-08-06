@@ -1,9 +1,8 @@
 
-from django.conf.urls import url
+from django.conf.urls import url,include
 from django.contrib import admin
-from posts import views as posts_views
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^posts/$', posts_views.post_home),
+    url(r'^posts/', include("posts.urls" , namespace='posts')),
 ]
