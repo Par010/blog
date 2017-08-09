@@ -6,6 +6,8 @@
     {% if instance.user.get_full_name %}
     <p>Author: {{ instance.user.get_full_name }}</p>
     {% endif %}
+    <div class="fb-like" data-href="{{ request.build_absolute_uri }}" data-layout="standard" data-action="like" data-size="small" data-show-faces="false" data-share="true"></div>
+    <hr>
       {% if instance.image %}
       <img src="{{ instance.image.url }}" class= "img-responsive" >
       {% endif %}
@@ -14,9 +16,11 @@
       <br>
       <br>
       {{instance.content|linebreaks}}
-      {{ instance.content|urlify }}
-      <a href="https://www.facebook.com/sharer/sharer.php?u={{ request.builld_absolute_uri }}">Facebook
+      <hr>
+      <div class="fb-comments" data-href="{{ request.build_absolute_uri }}" data-numposts="5"></div>
+      <!-- {{ instance.content|urlify }} -->
+      <!-- <a href="https://www.facebook.com/sharer/sharer.php?u={{ request.build_absolute_uri }}">Facebook
       </a>
-    <a href="https://twitter.com/home?status={{ instance.content|urlify }}%20{{ request.builld_absolute_uri }}">Twitter
-    </a>
+    <a href="https://twitter.com/home?status={{ instance.content|urlify }}%20{{ request.build_absolute_uri }}">Twitter
+    </a> -->
   {% endblock content%}
