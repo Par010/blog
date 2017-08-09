@@ -1,4 +1,5 @@
 {% extends "posts/base.html" %}
+{% load urlify %}
 {% block head %} {{instance.title}}| {{block.super}} {% endblock head %}
 {% block content %}
     <h1>{{title}}</h1>
@@ -10,5 +11,9 @@
       <br>
       <br>
       {{instance.content|linebreaks}}
-
+      {{ instance.content|urlify }}
+      <a href="https://www.facebook.com/sharer/sharer.php?u={{ request.builld_absolute_uri }}">Facebook
+      </a>
+    <a href="https://twitter.com/home?status={{ instance.content|urlify }}%20{{ request.builld_absolute_uri }}">Twitter
+    </a>
   {% endblock content%}
