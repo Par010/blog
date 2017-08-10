@@ -9,6 +9,7 @@
       {% load staticfiles %}
     <link rel="stylesheet" href = "{% static 'posts/css/base.css' %}"/>
     <title>{% block head %} Blog {% endblock head %}</title>
+    {% block head_extra %}{{form.media}}{% endblock %}
   </head>
   <body>
     <div id="fb-root"></div>
