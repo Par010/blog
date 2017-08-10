@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'posts',
     #third party apps
     'pagedown',
+    'markdown_deux',
 ]
 
 MIDDLEWARE = [
