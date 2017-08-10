@@ -1,6 +1,8 @@
 h1{
   color: #777;
 }
-body{
-  background-color: white;
+
+.wmd-panel{
+  margin-left: 0px !important;
+  margin-right: 0px !important;
 }
