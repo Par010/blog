@@ -23,10 +23,10 @@
       <hr>
       <div class="lead">
         {% for comment in comments %}
-          <div class="">
-            {{comment.content}}
-            <br>
-            by {{comment.user}} {{comment.timestamp|timesince}}
+        <blockquote class="blockquote">
+            <p class="mb-0">  {{comment.content}}</p>
+            <footer class="blockquote-footer">by {{comment.user}} {{comment.timestamp|timesince}}</footer>
+        </blockquote>
             <hr>
           </div>
         {% endfor %}
