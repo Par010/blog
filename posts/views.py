@@ -32,7 +32,7 @@ def post_detail(request, slug=None):
             raise Http404
 
     share_string = quote_plus(instance.content)
-    comments = Comment.objects.filter_by_instance(instance)
+    comments = instance.comments
     context = {
         "instance" : instance,
         "title" : instance.title,

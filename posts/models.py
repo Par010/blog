@@ -6,6 +6,7 @@ from django.db.models.signals import pre_save
 from django.utils.text import slugify
 from markdown_deux import markdown
 from django.utils.safestring import mark_safe
+from comments.models import Comment
 # Create your models here.
 
 class PostManager(models.Manager):
@@ -38,6 +39,12 @@ class Post(models.Model):
         content = self.content
         markdown_text = markdown(content)
         return mark_safe(markdown_text)'''
+
+    @property
+    def comments(self):
+        instance = self
+        qs = Comment.objects.filter_by_instance(instance)
+        return qs
 
     def get_absolute_url(self):
         return reverse("posts:detail", kwargs= {"slug" : self.slug})
