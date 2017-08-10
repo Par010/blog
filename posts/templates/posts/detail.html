@@ -21,7 +21,17 @@
       <br>
       <div class="content-markdown">{{ instance.content }}</div>
       <hr>
-      <div class="fb-comments" data-href="{{ request.build_absolute_uri }}" data-numposts="5"></div>
+      <div class="lead">
+        {% for comment in comments %}
+          <div class="">
+            {{comment.content}}
+            <br>
+            by {{comment.user}} {{comment.timestamp|timesince}}
+            <hr>
+          </div>
+        {% endfor %}
+      </div>
+      <!-- <div class="fb-comments" data-href="{{ request.build_absolute_uri }}" data-numposts="5"></div> -->
       <!-- {{ instance.content|urlify }} -->
       <!-- <a href="https://www.facebook.com/sharer/sharer.php?u={{ request.build_absolute_uri }}">Facebook
       </a>
