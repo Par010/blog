@@ -15,14 +15,17 @@ def login_view(request):
     if form.is_valid():
         username = form.cleaned_data.get("username")
         password = form.cleaned_data.get("password")
-    context = {
+        user = authenticate(username=username, password=password)
+        login(request, user)
+
+    return render(request,"accounts/acform.html",{
         "form":form,
         "title":title,
-    }
-    return render(request,"accounts/acform.html",context)
+    })
 
 def register_view(request):
-    return render(request,"login_form.html",context)
+    return render(request,"accounts/acform.html",context)
 
 def logout_view(request):
-    return render(request,"login_form.html",context)
+    logout(request)
+    return render(request,"accounts/acform.html",context)
