@@ -4,6 +4,7 @@
 {% block head %} {{instance.title}}| {{block.super}} {% endblock head %}
 {% block content %}
     <h1>{{title}}</h1><br>
+    <p>Read Time: {{instance.read_time|time:"i"}} minutes</p>
     {% if instance.user.get_full_name %}
     <p>Author: {{ instance.user.get_full_name }}</p>
     {% endif %}
