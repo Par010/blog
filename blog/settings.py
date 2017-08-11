@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'posts',
     'comments',
+    'accounts',
     #third party apps
     'pagedown',
     'markdown_deux',
