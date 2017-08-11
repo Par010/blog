@@ -1,5 +1,6 @@
 {% extends "posts/base.html" %}
 {% load urlify %}
+{% load crispy_forms_tags %}
 {% block head %} {{instance.title}}| {{block.super}} {% endblock head %}
 {% block content %}
     <h1>{{title}}</h1><br>
@@ -21,14 +22,19 @@
       <br>
       <div class="content-markdown">{{ instance.content }}</div>
       <hr>
-      <div class="lead">
+      <div>
+      <p class="lead">Comments<p>
+        <form method="POST" action="."> {% csrf_token %}
+        {{ comment_form|crispy }}
+        <br>
+        <input type = "submit" value="Post comment" class="btn btn-default">
+      </form>
         {% for comment in comments %}
         <blockquote class="blockquote">
-            <p class="mb-0">  {{comment.content}}</p>
+            <p>{{comment.content}}</p>
             <footer class="blockquote-footer">by {{comment.user}} {{comment.timestamp|timesince}}</footer>
         </blockquote>
             <hr>
-          </div>
         {% endfor %}
       </div>
       <!-- <div class="fb-comments" data-href="{{ request.build_absolute_uri }}" data-numposts="5"></div> -->
