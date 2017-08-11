@@ -2,6 +2,11 @@
 {% load urlify %}
 {% load crispy_forms_tags %}
 {% block head %} {{instance.title}}| {{block.super}} {% endblock head %}
+
+{% block post_detail_link %}
+<li><a href="{{instance.get_absolute_url}}">{{instance.title}}</a></li>
+{% endblock %}
+
 {% block content %}
     <h1>{{title}}</h1><br>
     <p>Read Time: {{instance.read_time|time:"i"}} minutes</p>
