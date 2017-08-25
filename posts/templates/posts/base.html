@@ -28,11 +28,12 @@
         <li><a href = '{% url "posts:list" %}'>Home</li>
           {% block post_detail_link %}
           {% endblock %}
+
           {% if not request.user.is_authenticated %}
-        <li class="pull-right"><a href = '{% url "register" %}'>Register</li>
-        <li class="pull-right"><a href = '{% url "login" %}'>Login</li>
+        <li class="pull-right"><a href = '{% url "register" %}'>Register</a></li>
+        <li class="pull-right"><a href = '{% url "login" %}'>Login</a></li>
           {% else %}
-        <li class="pull-right"><a href = '{% url "logout" %}'>Logout</li>
+        <li class="pull-right"><a href = '{% url "logout" %}'>Logout</a></li>
           {% endif %}
       </ol>
       {% block content %}
