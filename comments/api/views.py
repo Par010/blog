@@ -22,7 +22,6 @@ from comments.models import Comment
 from .serializers import (
     CommentSerializer,
     CommentDetailSerializer,
-    CommentEditSerializer,
     create_comment_serializer
      )
 
@@ -78,15 +77,10 @@ class CommentListAPIView(ListAPIView):
 #     lookup_field = 'slug'
 #     permission_classes = [IsAuthenticatedOrReadOnly, IsOwnerOrReadOnly]
 
-
-class CommentDetailAPIView(RetrieveAPIView):
-    queryset = Comment.objects.all()
-    serializer_class = CommentDetailSerializer
-    lookup_field = 'pk'
-
-class CommentEditAPIView(DestroyModelMixin, UpdateModelMixin, RetrieveAPIView):
+class CommentDetailAPIView(DestroyModelMixin, UpdateModelMixin, RetrieveAPIView):
     queryset = Comment.objects.filter(id__gte=0)
-    serializer_class = CommentEditSerializer
+    serializer_class = CommentDetailSerializer
+    permission_classes = [IsAuthenticatedOrReadOnly, IsOwnerOrReadOnly]
 
     def put(self, request, *args, **kwargs):
         return self.update(request, *args, **kwargs)
