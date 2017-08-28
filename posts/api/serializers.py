@@ -3,7 +3,7 @@ from rest_framework.serializers import (
     HyperlinkedIdentityField,
     SerializerMethodField
     )
-from comments.api.serializers import CommentSerializer
+from comments.api.serializers import CommentListSerializer
 from comments.models import Comment
 from posts.models import Post
 class PostCreateUpdateSerializer(ModelSerializer):
@@ -79,5 +79,5 @@ class PostDetailSerializer(ModelSerializer):
         content_type = obj.get_content_type
         object_id = obj.id
         c_qs = Comment.objects.filter_by_instance(obj)
-        comments = CommentSerializer(c_qs, many=True).data
+        comments = CommentListSerializer(c_qs, many=True).data
         return comments
